@@ -164,7 +164,7 @@ public:
 };
 
 void cmdLineParse(int argc, char **argv, cmdLineReadable** params,
-        std::vector<std::string> &nonoptArgs, int *argcStripped = (int *) NULL,
+        const std::vector<std::string> &nonoptArgs, int *argcStripped = (int *) NULL,
         char ***argvStripped = (char ***) NULL);
 
 char* FileExtension( char* fileName );

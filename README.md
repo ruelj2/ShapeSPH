@@ -5,6 +5,11 @@
 <A HREF="#NOTES">notes</A>
 </CENTER>
 <HR>
+<A NAME="DESCRIPTION"><B>MODIFICATIONS TO THE ORIGINAL REPO</B></A><br>
+<UL>
+This repo has been modified to build from CMAKE with automatic fftw3 discovery instead of a MAKEFILE.
+</UL>
+<HR>
 <A NAME="DESCRIPTION"><B>REPOSITORY DESCRIPTION</B></A><br>
 <UL>
 This distribution is comprised of three repositories that use signal processing on the sphere and the group of rotations to compute affine-invariant shape descriptors, align models, and compute the reflective and rotational symmetries of a shape.

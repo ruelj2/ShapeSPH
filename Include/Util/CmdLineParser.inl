@@ -157,13 +157,13 @@ inline cmdLineReadable::cmdLineReadable(const char *name, char shortName)
 {
 	set=false;
 #ifdef WIN32
-	this->name = _strdup(name);
+	this->name = strdup(name);
 #else // !WIN32
 	this->name=strdup(name);
 #endif // WIN32
     this->shortName = shortName;
 #ifdef WIN32
-    this->description = _strdup("NO DESCRIPTION: %s\n");
+    this->description = strdup("NO DESCRIPTION: %s\n");
 #else // !WIN32
     this->description = strdup("NO DESCRIPTION: %s\n");
 #endif // WIN32
@@ -173,7 +173,7 @@ inline void cmdLineReadable::setDescription(const char *desc)
 {
     free(description);
 #ifdef WIN32
-    description = _strdup(desc);
+    description = strdup(desc);
 #else // !WIN32
     description = strdup(desc);
 #endif // WIN32
@@ -332,7 +332,7 @@ inline int cmdLineString::read(char** argv,int argc){
 	{
         free(value);
 #ifdef WIN32
-		value = _strdup(argv[0]);
+		value = strdup(argv[0]);
 #else // !WIN32
 		value = strdup(argv[0]);
 #endif // WIN32
@@ -482,7 +482,7 @@ inline cmdLineReadable *getReadableByShortName(cmdLineReadable **params, char c)
 }
 
 inline void cmdLineParse(int argc, char **argv, cmdLineReadable** params,
-        std::vector<std::string> &nonoptArgs, int *argcStripped,
+        const std::vector<std::string> &nonoptArgs, int *argcStripped,
         char ***argvStripped)
 {
     // Whether we are stripping out the arguments we match so they can be parsed
@@ -494,7 +494,7 @@ inline void cmdLineParse(int argc, char **argv, cmdLineReadable** params,
     if (stripping)  {
         // Copy over the invocation path
 #ifdef WIN32
-        strippedArgs.push_back( _strdup(argv[0]) );
+        strippedArgs.push_back( strdup(argv[0]) );
 #else // !WIN32
         strippedArgs.push_back(strdup(argv[0]));
 #endif // WIN32
@@ -552,7 +552,7 @@ inline void cmdLineParse(int argc, char **argv, cmdLineReadable** params,
                     }
                     else    {
 #ifdef WIN32
-                        strippedArgs.push_back( _strdup(currentOption) );
+                        strippedArgs.push_back( strdup(currentOption) );
 #else // !WIN32
                         strippedArgs.push_back(strdup(currentOption));
 #endif // WIN32
@@ -601,7 +601,7 @@ inline void cmdLineParse(int argc, char **argv, cmdLineReadable** params,
                             fprintf(stderr, "ERROR: invalid option: -%c\n", c);
                         else    {
 #ifdef WIN32
-                            char *option = _strdup("-c");
+                            char *option = strdup("-c");
 #else // !WIN32
                             char *option = strdup("-c");
 #endif // WIN32
@@ -621,13 +621,8 @@ inline void cmdLineParse(int argc, char **argv, cmdLineReadable** params,
             // the matched arguments. Otherwise they are placed in the
             // nonoptArgs vector.
             if (stripping)
-#ifdef WIN32
-                strippedArgs.push_back( _strdup(*argv) );
-#else // !WIN32
-                strippedArgs.push_back(strdup(*argv));
-#endif // WIN32
-            else
-                nonoptArgs.push_back(std::string(*argv));
+                strippedArgs.push_back( strdup(*argv) );
+
             ++argv, --argc;
 		}
 	}

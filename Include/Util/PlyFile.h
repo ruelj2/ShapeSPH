@@ -40,7 +40,7 @@
 
 
 #ifndef WIN32
-#define _strdup strdup
+#define strdup strdup
 #endif
 
 #ifdef __cplusplus

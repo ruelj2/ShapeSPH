@@ -28,7 +28,7 @@ DAMAGE.
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
-#include <Include/fftw3.h>
+#include <fftw3.h>
 #include <SignalProcessing/Complex.h>
 
 

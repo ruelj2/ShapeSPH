@@ -32,7 +32,7 @@ DAMAGE.
 #include "SignalProcessing/CubeGrid.h"
 #include "SignalProcessing/Fourier.h"
 #include "Util/Ply.h"
-#include "Util/cmdLineParser.h"
+#include "Util/CmdLineParser.h"
 #include "Util/Geometry.h"
 #include "Util/Util.h"
 #include "Util/Rasterizer.h"
@@ -156,7 +156,7 @@ int run( void )
 }
 int main( int argc , char* argv[] )
 {
-	cmdLineParse( argc , argv , params , std::vector< std::string >() );
+	cmdLineParse( argc , argv , params , std::vector< std::string >());
 	if( !In.set )
 	{
 		ShowUsage( argv[0] );

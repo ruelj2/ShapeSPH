@@ -196,7 +196,7 @@ int PlyReadPolygons(char* fileName,
 	if( comments )
 	{
 		(*comments) = new char*[*commentNum+ply->num_comments];
-		for(int i=0;i<ply->num_comments;i++) (*comments)[i]=_strdup(ply->comments[i]);
+		for(int i=0;i<ply->num_comments;i++) (*comments)[i]=strdup(ply->comments[i]);
 		*commentNum=ply->num_comments;
 	}
 
@@ -387,7 +387,7 @@ int PlyReadPoints(char* fileName,
 	if(comments)
 	{
 		(*comments)=new char*[*commentNum+ply->num_comments];
-		for(int i=0;i<ply->num_comments;i++) (*comments)[i]=_strdup(ply->comments[i]);
+		for(int i=0;i<ply->num_comments;i++) (*comments)[i]=strdup(ply->comments[i]);
 		*commentNum=ply->num_comments;
 	}
 
@@ -517,7 +517,7 @@ int PlyReadGrid(char* fileName,
 	if(comments)
 	{
 		(*comments)=new char*[*commentNum+ply->num_comments];
-		for(int i=0;i<ply->num_comments;i++)	(*comments)[i]=_strdup(ply->comments[i]);
+		for(int i=0;i<ply->num_comments;i++)	(*comments)[i]=strdup(ply->comments[i]);
 		*commentNum=ply->num_comments;
 	}
 
